@@ -29,6 +29,11 @@ class Client
      */
     private $produits;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nom_boutique;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -78,6 +83,18 @@ class Client
                 $produit->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNomBoutique(): ?string
+    {
+        return $this->nom_boutique;
+    }
+
+    public function setNomBoutique(string $nom_boutique): self
+    {
+        $this->nom_boutique = $nom_boutique;
 
         return $this;
     }
