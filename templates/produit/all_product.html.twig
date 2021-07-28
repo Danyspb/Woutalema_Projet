@@ -1,0 +1,19 @@
+
+{% extends 'base.html.twig' %}
+    {% block title %}Hello PrestataireController!{% endblock %}
+
+{% block body %}
+    {% for prod in produits %}
+        <div class="container">
+
+            {{ prod.nom }}
+            {{ prod.lieu }}
+            {{ prod.image }}
+            {{ prod.prix }}
+            {{ prod.type }}
+            {{ prod.description }}
+
+        </div>
+
+    {% endfor %}
+{% endblock %}
