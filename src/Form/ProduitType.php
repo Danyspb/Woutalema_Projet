@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Produit;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,7 +16,7 @@ class ProduitType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('image')
+            ->add('imageFile',FileType::class)
             ->add('description')
             ->add('prix', MoneyType::class,[
                 'currency' => 'XAF'

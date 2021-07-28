@@ -6,10 +6,12 @@ use App\Repository\ProduitRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ProduitRepository::class)
- * @Vich\
+ * @Vich\Uploadable()
  */
 class Produit
 {
@@ -26,7 +28,15 @@ class Produit
     private $nom;
 
     /**
+     * @Vich\UploadableField(mapping="products",fileNameProperty="image")
+     * @var File|null
+     *
+     */
+    private $imageFile;
+
+    /**
      * @ORM\Column(type="string", length=255)
+     * @var string|null
      */
     private $image;
 
@@ -72,17 +82,6 @@ class Produit
         return $this;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -143,5 +142,43 @@ class Produit
 
         return $this;
     }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|null $imageFile
+     * @return Produit
+     */
+    public function setImageFile(?File $imageFile): Produit
+    {
+        $this->imageFile = $imageFile;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string|null $image
+     * @return Produit
+     */
+    public function setImage(?string $image): Produit
+    {
+        $this->image = $image;
+        return $this;
+    }
+
+
 
 }
