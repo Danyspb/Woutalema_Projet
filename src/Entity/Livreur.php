@@ -6,9 +6,14 @@ use App\Repository\LivreurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=LivreurRepository::class)
+ * @UniqueEntity(
+ *     fields={"numero_permis"},
+ *     message="Le numero de Permis existe deja"
+ * )
  */
 class Livreur
 {

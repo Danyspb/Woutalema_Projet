@@ -1,7 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AcceuilController!{% endblock %}
+{% block title %}Acceuil{% endblock %}
 
 {% block body %}
-<h2>Acceuil</h2>
+    <div class="featured-items">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h1>Featured Items</h1>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme">
+                        <a href="single-product.html">
+                            <div class="featured-item">
+                                <img src="{{ asset('acceuil/assets/images/item-01.jpg') }}" alt="Item 1">
+                                <h4>Proin vel ligula</h4>
+                                <h6>$15.00</h6>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
