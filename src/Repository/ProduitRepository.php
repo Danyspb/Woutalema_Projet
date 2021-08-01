@@ -19,6 +19,19 @@ class ProduitRepository extends ServiceEntityRepository
         parent::__construct($registry, Produit::class);
     }
 
+    public function findAllProducId($client): array
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT p
+                  FROM App\Entity\Produit p
+                  WHERE p.client = :client
+                  ORDER BY p.client ASC '
+        )->setParameter('client', $client);
+        return $query->getResult();
+    }
+
+
     // /**
     //  * @return Produit[] Returns an array of Produit objects
     //  */
@@ -47,4 +60,7 @@ class ProduitRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+
 }
