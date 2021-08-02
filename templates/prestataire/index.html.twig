@@ -1,9 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PrestataireController!{% endblock %}
+{% block title %}Informations{% endblock %}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
- {{ form_start(form) }}
-    <input type="submit" value="Enregistrer">
-    {{ form_end(form) }}
+    <h2 style="margin-top: 2%; margin-left: 32%; margin-bottom: 3%">Informations Supplementaires</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-2">
+                {{ form_start(form) }}
+                {{ form_row(form.lieu_atelier,{'attr':{'placeholder': 'Saisissez l\'adresse de votre atelier'}}) }}
+                {{ form_row(form.niveau_etude,{'attr':{'placeholder':'Saisissez votre niveau d\'etude'}}) }}
+                {{ form_row(form.imageFile,{'attr':{'placeholder':'inserez votre diplome'}}) }}
+                <p><strong><u>Attention:</u></strong> Ce dernier champ n'est <strong>pas Obligatoire</strong></p>
+
+
+                <button type="submit" class="btn btn-success" style="margin-top: 4%; margin-bottom: 2%;">Enregistrer</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <img class="rounded" src="{{ asset('mydocs/client.png') }}" alt="Chania" width="310" style="margin-left: 52%; margin-top: -36%; ">
+    </div>
 {% endblock %}

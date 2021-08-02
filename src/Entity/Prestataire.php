@@ -6,6 +6,8 @@ use App\Repository\PrestataireRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=PrestataireRepository::class)
@@ -18,6 +20,11 @@ class Prestataire
      * @ORM\Column(type="integer")
      */
     private $id;
+    /**
+     * @var File|null
+     * @Vich\UploadableField(mapping="diplomes", fileNameProperty="diplome")
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -25,7 +32,8 @@ class Prestataire
     private $niveau_etude;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable="true")
+     * @var string|null
      */
     private $diplome;
 
@@ -115,5 +123,25 @@ class Prestataire
 
         return $this;
     }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|null $imageFile
+     * @return Prestataire
+     */
+    public function setImageFile(?File $imageFile): Prestataire
+    {
+        $this->imageFile = $imageFile;
+        return $this;
+    }
+
+
 
 }

@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -71,6 +72,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Length(
+     *     max= "9",
+     *     maxMessage="erreur chiffre depasse",
+     *     min= "9",
+     *     minMessage="erreur chiffre manquant"
+     * )
      */
     private $telephone;
 
@@ -80,7 +87,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
+     * @Assert\Length(
+     *
+     *     min="17",
+     *     max="17"
+     * )
      */
     private $numero_cni;
 

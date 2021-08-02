@@ -65,6 +65,11 @@ class Produit
      */
     private $type;
 
+    /**
+     * @ORM\Column(type="integer", length=255)
+     */
+    private $contact;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -176,6 +181,18 @@ class Produit
     public function setImage(?string $image): Produit
     {
         $this->image = $image;
+        return $this;
+    }
+
+    public function getContact(): ?string
+    {
+        return $this->contact;
+    }
+
+    public function setContact(string $contact): self
+    {
+        $this->contact = $contact;
+
         return $this;
     }
 

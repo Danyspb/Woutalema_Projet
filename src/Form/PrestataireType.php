@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Prestataire;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,7 @@ class PrestataireType extends AbstractType
     {
         $builder
             ->add('niveau_etude')
-            ->add('diplome')
+            ->add('imageFile',FileType::class)
             ->add('lieu_atelier')
         ;
     }
