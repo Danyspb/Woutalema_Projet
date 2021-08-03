@@ -1,218 +1,218 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Creer un Compte{% endblock %}</title>
-    {# Run `composer require symfony/webpack-encore-bundle`
-       and uncomment the following Encore helpers to start using Symfony UX #}
-    {% block stylesheets %}
-        {#{{ encore_entry_link_tags('app') }}#}
-    {% endblock %}
-
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-
-    <title>Woutalema</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('acceuil/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{{ asset('acceuil/assets/css/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('acceuil/assets/css/tooplate-main.css') }}">
-    <link rel="stylesheet" href="{{ asset('acceuil/assets/css/owl.css') }}">
-
-    {% block javascripts %}
-        {#{{ encore_entry_script_tags('app') }}#}
-    {% endblock %}
-</head>
-<body>
-<!-- Pre Header -->
-<div id="pre-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <span>Bienvenue dans notre page de recherche de Produit et de Prestation</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="#"><img src="{{ asset('acceuil/assets/images/Woutalema.png') }}" style="margin-top: -1%;" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('acceuil') }}">Acceuil
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('produit') }}">Produit</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('service') }}">Service</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('all_prod') }}">Mes produits</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('produit') }}">Mes Services</a>
-                </li>
-                {% if not app.user %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('login') }}">Connexion</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('logout') }}">Deconnexion</a>
-                    </li>
-                {% endif %}
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<!-- Page Content -->
-<!-- Banner Starts Here -->
-<div class="banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="caption">
-                    <h2>Woutalema</h2>
-                    <div class="line-dec"></div>
-                    <p>Votre Site de recherche de vente produits et d'offre de prestation 100% Senegalaise disponible 24h/24.<br><strong>Connectez-vous et commencez votre shopping</strong>
-                        <br><br> <a rel="nofollow" href="https://www.facebook.com/tooplate/"></a> <a rel="nofollow" href="https://www.pexels.com"></a>.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Banner Ends Here -->
-{% form_theme form 'bootstrap_4_layout.html.twig' %}
-
-{% block body %}
-<h2 style="margin-top: 2%; margin-left: 40%; margin-bottom: 3%">Creation d'un Compte </h2>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-3">
-            {{ form_start(form) }}
-            <div class="form-group" style="padding: 40px 75px 60px 40px; background: rgba(111, 204, 251, 0.58); border-radius: 7px;">
-                <div class="row">
-                    <div class="col-md-6">{{ form_row(form.nom,{'attr':{'placeholder': 'Saisissez votre nom'}}) }}</div>
-                    <div class="col-md-6">{{ form_row(form.prenom,{'attr':{'placeholder': 'Saisissez votre prenom'}}) }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">{{ form_row(form.date_naissance,{'attr':{'placeholder': 'Saisissez la marque'}}) }}</div>
-                    <div class="col-md-6">{{ form_row(form.adresse,{'attr':{'placeholder': 'Saisissez votre adresse'}}) }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">{{ form_row(form.telephone,{'attr':{'placeholder': 'Numero de telephone'}}) }}</div>
-                    <div class="col-md-6">{{ form_row(form.email,{'attr':{'placeholder': 'Saisissez votre email'}}) }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6" style="margin-top: 7px;">{{ form_row(form.numero_cni,{'attr':{'placeholder': 'Numero CNI'}}) }}</div>
-                    <div class="col-md-6">{{ form_row(form.roles,{'label': 'Type de Compte'}) }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">{{ form_row(form.username,{'attr':{'placeholder': 'Saisissez votre identifiant'}}) }}</div>
-                    <div class="col-md-6">{{ form_row(form.password,{'attr':{'placeholder': 'Saisissez votre mots de passe'}}) }}</div>
-                </div>
-                <button type="submit" class="btn btn-success" style="margin-top: 4%; margin-left: 42%; margin-bottom: 2%;">Enregistrer</button>
-            </div>
-
-            {{ form_end(form) }}
-
-        </div>
-
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Creer un Compte{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
-        </div>
-</div>
 
-</body>
 
-<hr>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
-<footer>
-    <!-- Footer Starts Here -->
-    <div class="footer">
+        <title>Woutalema</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{ asset('acceuil/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="{{ asset('acceuil/assets/css/fontawesome.css') }}">
+        <link rel="stylesheet" href="{{ asset('acceuil/assets/css/tooplate-main.css') }}">
+        <link rel="stylesheet" href="{{ asset('acceuil/assets/css/owl.css') }}">
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    </head>
+    <body>
+    <!-- Pre Header -->
+    <div id="pre-header">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <span>Bienvenue dans notre page de recherche de Produit et de Prestation</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ path('acceuil') }}"><img src="{{ asset('acceuil/assets/images/Woutalema.png') }}" style="margin-top: -1%;" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('acceuil') }}">Acceuil
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('produit') }}">Produit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('service') }}">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('all_prod') }}">Mes produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('produit') }}">Mes Services</a>
+                    </li>
+                    {% if not app.user %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('login') }}">Connexion</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('logout') }}">Deconnexion</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+    <div class="banner">
+        <div class="container">
+            <div class="row">
                 <div class="col-md-12">
-                    <div class="footer-menu">
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Help</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">How It Works ?</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="social-icons">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                        </ul>
+                    <div class="caption">
+                        <h2>Woutalema</h2>
+                        <div class="line-dec"></div>
+                        <p>Votre Site de recherche de vente produits et d'offre de prestation 100% Senegalaise disponible 24h/24.<br><strong>Connectez-vous et commencez votre shopping</strong>
+                            <br><br> <a rel="nofollow" href="https://www.facebook.com/tooplate/"></a> <a rel="nofollow" href="https://www.pexels.com"></a>.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Footer Ends Here -->
+    <!-- Banner Ends Here -->
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
+    {% block body %}
+    <h2 style="margin-top: 2%; margin-left: 40%; margin-bottom: 3%">Creation d'un Compte </h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 offset-2">
+                {{ form_start(form) }}
+                <div class="form-group" style="padding: 40px 65px 60px 60px; background: rgba(111, 204, 251, 0.58); border-radius: 7px;">
+                    <div class="row">
+                        <div class="col-md-6">{{ form_row(form.nom,{'attr':{'placeholder': 'Saisissez votre nom'}}) }}</div>
+                        <div class="col-md-6">{{ form_row(form.prenom,{'attr':{'placeholder': 'Saisissez votre prenom'}}) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">{{ form_row(form.date_naissance,{'attr':{'placeholder': 'Saisissez la marque'}}) }}</div>
+                        <div class="col-md-6">{{ form_row(form.adresse,{'attr':{'placeholder': 'Saisissez votre adresse'}}) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">{{ form_row(form.telephone,{'attr':{'placeholder': 'Numero de telephone'}}) }}</div>
+                        <div class="col-md-6">{{ form_row(form.email,{'attr':{'placeholder': 'Saisissez votre email'}}) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style="margin-top: 7px;">{{ form_row(form.numero_cni,{'attr':{'placeholder': 'Numero CNI'}}) }}</div>
+                        <div class="col-md-6">{{ form_row(form.roles,{'label': 'Type de Compte'}) }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">{{ form_row(form.username,{'attr':{'placeholder': 'Saisissez votre identifiant'}}) }}</div>
+                        <div class="col-md-6">{{ form_row(form.password,{'attr':{'placeholder': 'Saisissez votre mots de passe'}}) }}</div>
+                    </div>
+                    <button type="submit" class="btn btn-success" style="margin-top: 4%; margin-left: 42%; margin-bottom: 2%;">Enregistrer</button>
+                </div>
 
-    <!-- Sub Footer Starts Here -->
-    <div class="sub-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="copyright-text">
-                        <p>Copyright &copy; 2019 Company Name
+                {{ form_end(form) }}
 
-                            - Design: <a rel="nofollow" href="https://www.facebook.com/tooplate">Tooplate</a></p>
+            </div>
+
+            {% endblock %}
+            </div>
+    </div>
+
+    </body>
+
+    <hr>
+
+    <footer>
+        <!-- Footer Starts Here -->
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="footer-menu">
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">How It Works ?</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Sub Footer Ends Here -->
+        <!-- Footer Ends Here -->
 
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{ asset('acceuil/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('acceuil/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- Sub Footer Starts Here -->
+        <div class="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2019 Company Name
+
+                                - Design: <a rel="nofollow" href="https://www.facebook.com/tooplate">Tooplate</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sub Footer Ends Here -->
 
 
-    <!-- Additional Scripts -->
-    <script src="{{ asset('acceuil/assets/js/custom.js') }}"></script>
-    <script src="{{ asset('acceuil/assets/js/owl.js') }}"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script src="{{ asset('acceuil/vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('acceuil/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 
-    <script language = "text/Javascript">
-        cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-        function clearField(t){                   //declaring the array outside of the
-            if(! cleared[t.id]){                      // function makes it static and global
-                cleared[t.id] = 1;  // you could use true and false, but that's more typing
-                t.value='';         // with more chance of typos
-                t.style.color='#fff';
+        <!-- Additional Scripts -->
+        <script src="{{ asset('acceuil/assets/js/custom.js') }}"></script>
+        <script src="{{ asset('acceuil/assets/js/owl.js') }}"></script>
+
+
+        <script language = "text/Javascript">
+            cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+            function clearField(t){                   //declaring the array outside of the
+                if(! cleared[t.id]){                      // function makes it static and global
+                    cleared[t.id] = 1;  // you could use true and false, but that's more typing
+                    t.value='';         // with more chance of typos
+                    t.style.color='#fff';
+                }
             }
-        }
-    </script>
-</footer>
-</html>
+        </script>
+    </footer>
+    </html>

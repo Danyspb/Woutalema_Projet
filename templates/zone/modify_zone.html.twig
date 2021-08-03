@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Ajout Produit{% endblock %}</title>
+    <title>{% block title %}Ajout Zone{% endblock %}</title>
     {# Run `composer require symfony/webpack-encore-bundle`
        and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
@@ -101,23 +101,21 @@
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-    <h2 style="margin-top: 2%; margin-left: 42%; margin-bottom: 3%">Ajouter un Produit</h2>
+    <h2 style="margin-top: 2%; margin-left: 42%; margin-bottom: 3%">Modifier cette Zone</h2>
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-2">
                 {{ form_start(form) }}
-                {{ form_row(form.nom,{'attr':{'placeholder': 'Saisissez le libelle du produit'}}) }}
-                {{ form_row(form.type,{'label': 'Choisissez votre type de Compte'}) }}
-                {{ form_row(form.description,{'attr':{'placeholder': 'Faite la description du produit'}}) }}
-                {{ form_row(form.prix,{'attr':{'placeholder': 'Saisissez le montant du produit'}}) }}
-                {{ form_row(form.imageFile,{'attr':{'placeholder': 'Mettez l\'image du produit' }}) }}
-                {{ form_row(form.lieu,{'attr':{'placeholder': 'Lieu de la disponibilite du produit' }}) }}
+                {{ form_row(form.region) }}
+                {{ form_row(form.commune,{'attr':{'placeholder': 'Saisissez la commune'}}) }}
+                {{ form_row(form.horraire_debut) }}
+                {{ form_row(form.horraire_fin) }}
                 {{ form_row(form.contact,{'attr':{'placeholder': 'Entrez le numero de joignabilite' }}) }}
-                <button type="submit" class="btn btn-success" style="margin-top: 4%; margin-bottom: 2%;">Enregistrer</button>
+                <button type="submit" class="btn btn-success" style="margin-top: 4%; margin-bottom: 2%;">Modifier</button>
                 {{ form_end(form) }}
             </div>
         </div>
-        <img class="rounded" src="{{ asset('mydocs/prod.png') }}" alt="Chania" width="350" style="margin-left: 52%; margin-top: -72%; ">
+        <img class="rounded" src="{{ asset('mydocs/scout.png') }}" alt="Chania" width="400" style="margin-left: 52%; margin-top: -51%; ">
     </div>
 
 {% endblock %}

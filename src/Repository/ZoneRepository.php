@@ -19,6 +19,19 @@ class ZoneRepository extends ServiceEntityRepository
         parent::__construct($registry, Zone::class);
     }
 
+
+    public function findAllAreaesId($zones): array
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT z
+                  FROM App\Entity\Zone z
+                  WHERE z.livreur = :livreur
+                  ORDER BY z.livreur ASC '
+        )->setParameter('livreur', $zones);
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Zone[] Returns an array of Zone objects
     //  */

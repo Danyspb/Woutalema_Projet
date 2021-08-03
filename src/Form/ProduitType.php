@@ -24,6 +24,7 @@ class ProduitType extends AbstractType
             ])
             ->add('lieu')
             ->add('type')
+            ->add('contact')
 
         ;
     }

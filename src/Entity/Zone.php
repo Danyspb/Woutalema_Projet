@@ -44,6 +44,11 @@ class Zone
      */
     private $livreur;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $contact;
+
 
     public function getId(): ?int
     {
@@ -106,6 +111,18 @@ class Zone
     public function setLivreur(?Livreur $livreur): self
     {
         $this->livreur = $livreur;
+
+        return $this;
+    }
+
+    public function getContact(): ?int
+    {
+        return $this->contact;
+    }
+
+    public function setContact(int $contact): self
+    {
+        $this->contact = $contact;
 
         return $this;
     }

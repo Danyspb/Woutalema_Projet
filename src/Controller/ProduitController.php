@@ -21,7 +21,7 @@ class ProduitController extends AbstractController
      * @param EntityManagerInterface $manager
      * @return Response
      */
-    public function index(Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
+    public function index(Request $request, EntityManagerInterface $manager): Response
     {
         $produit = new Produit();
         $form_produit = $this->createForm(ProduitType::class,$produit);
@@ -69,11 +69,7 @@ class ProduitController extends AbstractController
             return $this->render('produit/info_product.html.twig',[
                 'produit' => $info,
             ]);
-        }else
-        {
-            echo 'Erreur 404';
         }
-
     }
 
 
@@ -105,7 +101,6 @@ class ProduitController extends AbstractController
      */
     public function modify(Produit $prod, Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
     {
-
         $modify_prooduit = $this->createForm(ProduitType::class,$prod);
         $modify_prooduit->handleRequest($request);
         if ($modify_prooduit->isSubmitted() && $modify_prooduit->isValid())

@@ -19,6 +19,19 @@ class ServiceRepository extends ServiceEntityRepository
         parent::__construct($registry, Service::class);
     }
 
+
+    public function findAllServiceID($zones): array
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT z
+                  FROM App\Entity\Zone z
+                  WHERE z.livreur = :livreur
+                  ORDER BY z.livreur ASC '
+        )->setParameter('livreur', $zones);
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Service[] Returns an array of Service objects
     //  */
