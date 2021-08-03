@@ -11,8 +11,9 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=PrestataireRepository::class)
+ * @Vich\Uploadable()
  */
-class Prestataire
+class Prestataire implements \Serializable
 {
     /**
      * @ORM\Id
@@ -143,5 +144,19 @@ class Prestataire
     }
 
 
+    /**
+     * @inheritDoc
+     */
+    public function serialize()
+    {
+        // TODO: Implement serialize() method.
+    }
 
+    /**
+     * @inheritDoc
+     */
+    public function unserialize($serialized)
+    {
+        // TODO: Implement unserialize() method.
+    }
 }

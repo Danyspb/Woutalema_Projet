@@ -20,15 +20,15 @@ class ServiceRepository extends ServiceEntityRepository
     }
 
 
-    public function findAllServiceID($zones): array
+    public function findAllServiceID($service): array
     {
         $entityManager = $this->getEntityManager();
         $query = $entityManager->createQuery(
-            'SELECT z
-                  FROM App\Entity\Zone z
-                  WHERE z.livreur = :livreur
-                  ORDER BY z.livreur ASC '
-        )->setParameter('livreur', $zones);
+            'SELECT s
+                  FROM App\Entity\Service s
+                  WHERE s.prestataire = :prestataire
+                  ORDER BY s.prestataire ASC '
+        )->setParameter('prestataire', $service);
         return $query->getResult();
     }
 

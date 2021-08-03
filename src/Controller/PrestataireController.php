@@ -30,7 +30,6 @@ class PrestataireController extends AbstractController
             $user = $session->get('user');
             $user->setPrestataire($prestataire);
             $manager->persist($user);
-            $manager->persist($prestataire);
             $manager->flush();
             return $this->redirectToRoute('acceuil');
         }

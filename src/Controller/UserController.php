@@ -34,7 +34,6 @@ class UserController extends AbstractController
             $user->setPassword($has);
             $man->persist($user);
             $session->set("user", $user);
-            //$man->flush();
             if ($role == "ROLE_CLIENT")
             {
                 return $this->redirectToRoute('client');

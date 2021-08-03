@@ -2,36 +2,37 @@
 
 namespace App\Form;
 
-use App\Entity\Produit;
+use App\Entity\Service;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
-class ProduitType extends AbstractType
+class ServiceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('nom')
-            ->add('imageFile',FileType::class)
             ->add('description')
-            ->add('prix', MoneyType::class,[
+            ->add('tarifs', MoneyType::class,[
                 'currency' => 'XAF'
             ])
+            ->add('imageFile', FileType::class,[
+                'required'=> false,
+                'label' => 'Realisation'
+            ])
             ->add('lieu')
-            ->add('type')
+            ->add('domaine')
             ->add('contact')
-
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Produit::class,
+            'data_class' => Service::class,
         ]);
     }
 }

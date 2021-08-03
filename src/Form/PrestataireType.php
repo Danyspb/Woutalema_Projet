@@ -14,7 +14,9 @@ class PrestataireType extends AbstractType
     {
         $builder
             ->add('niveau_etude')
-            ->add('imageFile',FileType::class)
+            ->add('imageFile',FileType::class,[
+                'required'=>false
+            ])
             ->add('lieu_atelier')
         ;
     }

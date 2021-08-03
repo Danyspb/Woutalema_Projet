@@ -5,10 +5,13 @@ namespace App\Entity;
 use App\Repository\ServiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ServiceRepository::class)
+ * @Vich\Uploadable()
  */
 class Service
 {
@@ -36,6 +39,7 @@ class Service
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @var string|null
      */
     private $realisation;
 
@@ -54,6 +58,21 @@ class Service
      * @ORM\ManyToOne(targetEntity=Prestataire::class, inversedBy="services")
      */
     private $prestataire;
+
+
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $contact;
+
+    /**
+     * @Vich\UploadableField(mapping="services",fileNameProperty="realisation")
+     * @var File | null
+     *
+     */
+    private $imageFile;
+
 
 
     public function getId(): ?int
@@ -145,4 +164,38 @@ class Service
 
         return $this;
     }
+
+    public function getContact(): ?int
+    {
+        return $this->contact;
+    }
+
+    public function setContact(int $contact): self
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|null $imageFile
+     * @return Service
+     */
+    public function setImageFile(?File $imageFile): Service
+    {
+        $this->imageFile = $imageFile;
+        return $this;
+    }
+
+
+
+
 }

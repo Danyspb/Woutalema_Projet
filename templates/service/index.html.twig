@@ -1,20 +1,203 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Ajout Service{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle`
+       and uncomment the following Encore helpers to start using Symfony UX #}
+    {% block stylesheets %}
+        {#{{ encore_entry_link_tags('app') }}#}
+    {% endblock %}
 
-{% block title %}Hello ServiceController!{% endblock %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <title>Woutalema</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('acceuil/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{{ asset('acceuil/assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('acceuil/assets/css/tooplate-main.css') }}">
+    <link rel="stylesheet" href="{{ asset('acceuil/assets/css/owl.css') }}">
+
+    {% block javascripts %}
+        {#{{ encore_entry_script_tags('app') }}#}
+    {% endblock %}
+</head>
+<body>
+<!-- Pre Header -->
+<div id="pre-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span>Bienvenue dans notre page de recherche de Produit et de Prestation</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img src="{{ asset('acceuil/assets/images/Woutalema.png') }}"  style="margin-top: -1%;" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('acceuil') }}">Acceuil
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('produit') }}">Produit</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('service') }}">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('all_prod') }}">Mes produits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('produit') }}">Mes Services</a>
+                </li>
+                {% if not app.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('login') }}">Connexion</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('logout') }}">Deconnexion</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<!-- Banner Starts Here -->
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="caption">
+                    <h2>Woutalema</h2>
+                    <div class="line-dec"></div>
+                    <p>Votre Site de recherche de vente produits et d'offre de prestation 100% Senegalaise disponible 24h/24.<br><strong>Connectez-vous et commencez votre shopping</strong>
+                        <br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Ends Here -->
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h2 style="margin-top: 2%; margin-left: 42%; margin-bottom: 3%">Ajouter un Service</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-2">
+                {{ form_start(form) }}
+                {{ form_row(form.domaine,{'attr':{'placeholder': 'Saisissez le libelle du produit'}}) }}
+                {{ form_row(form.nom,{'label': 'Saisissez le libele du service'}) }}
+                {{ form_row(form.description,{'attr':{'placeholder': 'Faite la description du service'}}) }}
+                {{ form_row(form.imageFile,{'attr':{'placeholder': 'Mettez l\'image du produit' }}) }}
+                {{ form_row(form.tarifs,{'attr':{'placeholder': 'Saisissez le tarif' }}) }}
+                {{ form_row(form.lieu,{'attr':{'placeholder': 'Votre adresse' }}) }}
+                {{ form_row(form.contact,{'attr':{'placeholder': 'Entrez le numero de joignabilite' }}) }}
+                <button type="submit" class="btn btn-success" style="margin-top: 4%; margin-bottom: 2%;">Enregistrer</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <img class="rounded" src="{{ asset('mydocs/prestataire.jpg') }}" alt="Chania" width="650" height="580" style="margin-left: 52%; margin-top: -68%; ">
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Stani/OneDrive/Bureau/Nouveau/Woutalema_Projet/src/Controller/ServiceController.php'|file_link(0) }}">src/Controller/ServiceController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Stani/OneDrive/Bureau/Nouveau/Woutalema_Projet/templates/service/index.html.twig'|file_link(0) }}">templates/service/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}
+</body>
+
+<hr>
+
+<footer>
+    <!-- Footer Starts Here -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+                <div class="col-md-12">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">How It Works ?</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="social-icons">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Ends Here -->
+
+
+
+
+    <!-- Sub Footer Starts Here -->
+    <div class="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright-text">
+                        <p>Copyright &copy; 2019 Company Name
+
+                            - Design: <a rel="nofollow" href="https://www.facebook.com/tooplate">Tooplate</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sub Footer Ends Here -->
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{ asset('acceuil/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('acceuil/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+
+    <!-- Additional Scripts -->
+    <script src="{{ asset('acceuil/assets/js/custom.js') }}"></script>
+    <script src="{{ asset('acceuil/assets/js/owl.js') }}"></script>
+
+
+    <script language = "text/Javascript">
+        cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+        function clearField(t){                   //declaring the array outside of the
+            if(! cleared[t.id]){                      // function makes it static and global
+                cleared[t.id] = 1;  // you could use true and false, but that's more typing
+                t.value='';         // with more chance of typos
+                t.style.color='#fff';
+            }
+        }
+    </script>
+</footer>
+</html>
