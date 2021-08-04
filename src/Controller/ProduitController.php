@@ -96,10 +96,9 @@ class ProduitController extends AbstractController
      * @param Produit $prod
      * @param Request $request
      * @param EntityManagerInterface $manager
-     * @param SessionInterface $session
      * @return Response
      */
-    public function modify(Produit $prod, Request $request, EntityManagerInterface $manager,SessionInterface $session): Response
+    public function modify(Produit $prod, Request $request, EntityManagerInterface $manager): Response
     {
         $modify_prooduit = $this->createForm(ProduitType::class,$prod);
         $modify_prooduit->handleRequest($request);
