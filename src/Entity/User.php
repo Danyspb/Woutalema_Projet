@@ -47,20 +47,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups("info:user")
+     *
      */
     private $username;
 
     /**
      * @ORM\Column(type="json")
-     * @Groups("info:user")
+     *
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Groups("info:user")
+     *
      */
     private $password;
 
@@ -81,7 +81,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="date")
-     * @Groups("info:user")
+     *
      */
     private $date_naissance;
 
@@ -99,7 +99,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("info:user")
+     *
      */
     private $email;
 
@@ -127,7 +127,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\OneToOne(targetEntity=Prestataire::class, cascade={"persist", "remove"})
-     * @Groups("info:user")
+     *
      */
     private $prestataire;
 

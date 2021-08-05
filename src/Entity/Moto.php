@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\MotoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MotoRepository::class)
@@ -14,36 +16,50 @@ class Moto
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("info:moto")
+     * @Assert\NotBlank()
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("info:moto")
+     * @Assert\NotBlank()
      */
     private $marque;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("info:moto")
+     * @Assert\NotBlank()
      */
     private $model;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("info:moto")
+     * @Assert\NotBlank()
      */
     private $matricule;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("info:moto")
+     * @Assert\NotBlank()
      */
     private $assurance;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("info:moto")
+     * @Assert\NotBlank()
      */
     private $num_carte_grise;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Livreur::class, inversedBy="motos")
+     * @ORM\ManyToOne(targetEntity=Livreur::class, inversedBy="motos",cascade={"persist"})
+     * @Groups("info:moto")
+     * @Assert\NotBlank()
      */
     private $livreur;
 
