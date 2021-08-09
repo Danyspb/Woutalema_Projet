@@ -30,6 +30,11 @@ class Livreur
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *
+     *     min="15",
+     *     max="15"
+     * )
      */
     private $numero_permis;
 
