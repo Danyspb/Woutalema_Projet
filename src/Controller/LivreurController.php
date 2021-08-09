@@ -17,22 +17,22 @@ class LivreurController extends AbstractController
      * @Route("/livreur", name="livreur")
      * @param Request $req
      * @param SessionInterface $session
-     * @param EntityManagerInterface $manager
+     * @param EntityManagerInterface $man
      * @return Response
      */
-    public function index(Request $req, SessionInterface $session,EntityManagerInterface $manager): Response
+    public function index(Request $req, SessionInterface $session,EntityManagerInterface $man): Response
     {
-
         $livreur = new Livreur();
         $livreur_form = $this->createForm(LivreurType::class,$livreur);
         $livreur_form->handleRequest($req);
         if ($livreur_form->isSubmitted() && $livreur_form->isValid())
-
         {
+            dd($livreur);
+            $man->persist($livreur);
             $user = $session->get('user');
             $user->setLivreur($livreur);
-            $manager->persist($user);
-            $manager->flush();
+            $man->persist($user);
+            $man->flush();
             return $this->redirectToRoute('login');
         }
         return $this->render('livreur/index.html.twig', [

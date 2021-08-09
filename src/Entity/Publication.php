@@ -33,6 +33,21 @@ class Publication
      */
     private $discussion;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="publications")
+     */
+    private $service;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="publications")
+     */
+    private $produit;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Zone::class, inversedBy="publications")
+     */
+    private $zone;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,6 +87,42 @@ class Publication
     public function setDiscussion(?Discussion $discussion): self
     {
         $this->discussion = $discussion;
+
+        return $this;
+    }
+
+    public function getService(): ?Service
+    {
+        return $this->service;
+    }
+
+    public function setService(?Service $service): self
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+    public function getProduit(): ?Produit
+    {
+        return $this->produit;
+    }
+
+    public function setProduit(?Produit $produit): self
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+
+    public function getZone(): ?Zone
+    {
+        return $this->zone;
+    }
+
+    public function setZone(?Zone $zone): self
+    {
+        $this->zone = $zone;
 
         return $this;
     }
