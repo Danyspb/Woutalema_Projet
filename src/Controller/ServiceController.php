@@ -38,7 +38,7 @@ class ServiceController extends AbstractController
     }
 
     /**
-     * @Route("all_service",name="all_service")
+     * @Route("/all_service",name="all_service")
      * @param ServiceRepository $repos
      * @return Response
      */
@@ -54,7 +54,7 @@ class ServiceController extends AbstractController
 
 
     /**
-     * @Route("single_service{id}",name="info_service")
+     * @Route("/single_service/{id}",name="info_service")
      * @param ServiceRepository $repo
      * @param $id
      * @return Response
@@ -72,7 +72,7 @@ class ServiceController extends AbstractController
     }
 
     /**
-     * @Route("modify_service{id}",name="serv_modi")
+     * @Route("/modify_service/{id}",name="serv_modi")
      * @param Service $service
      * @param Request $request
      * @param EntityManagerInterface $manager
@@ -97,7 +97,7 @@ class ServiceController extends AbstractController
     }
 
     /**
-     * @Route("supprime_service/{id}",name="delete_service")
+     * @Route("/supprime_service/{id}",name="delete_service")
      * @param $id
      * @param EntityManagerInterface $manager
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

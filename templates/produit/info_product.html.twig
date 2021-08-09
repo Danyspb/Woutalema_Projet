@@ -56,15 +56,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('produit') }}">Produit</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('service') }}">Service</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('all_prod') }}">Mes produits</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('produit') }}">Mes Services</a>
-                        </li>
+
                         {% if not app.user %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('login') }}">Connexion</a>
@@ -109,10 +105,13 @@
                             <a href="{{ path('produit_supp',{'id': produit.id}) }}" class="btn btn-outline-danger" style="margin-left: 3px;">Supprimer</a>
                             <div class="down-content">
                                 <div class="categories">
-                                    <h6>Category:  {{ produit.type }}</h6>
+                                    <h6>Category : {{ produit.type }}</h6>
                                 </div>
                                 <div class="share">
-                                    <h6>Lieu:  {{ produit.lieu}}</h6>
+                                    <h6>Lieu :  {{ produit.lieu}}</h6>
+                                </div>
+                                <div class="share">
+                                    <h6>Contact : {{ produit.contact}}</h6>
                                 </div>
                                 <div class="share">
                                     <h6>Share: <span><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></span></h6>

@@ -1,20 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdministrateurController!{% endblock %}
+{% block title %}liste des utilisateur{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Stani/OneDrive/Bureau/Woutalema/src/Controller/AdministrateurController.php'|file_link(0) }}">src/Controller/AdministrateurController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Stani/OneDrive/Bureau/Woutalema/templates/administrateur/index.html.twig'|file_link(0) }}">templates/administrateur/index.html.twig</a></code></li>
-    </ul>
-</div>
+    {{ form_start(form) }}
+    <div class="container">
+        <h2>les Utilisateurs</h2>
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Telephone</th>
+                <th>CNI</th>
+                <th>Adresse</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Type Compte</th>
+            </thead>
+           {% for user in form %}
+            <tbody>
+                <th>{{ user.id }}</th>
+                <th>{{ user.nom }}</th>
+                <th>{{ user.prenom }}</th>
+                <th>{{ user.telephone }}</th>
+                <th>{{ user.numeroCni }}</th>
+                <th>{{ user.adresse }}</th>
+                <th>{{ user.email }}</th>
+                <th>{{ user.username }}</th>
+                <th>
+                    {% for role in user.roles %}
+                        {{ role }}
+                    {% endfor %}
+                </th>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+    {{ form_end(form) }}
 {% endblock %}

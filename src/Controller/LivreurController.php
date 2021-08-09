@@ -33,7 +33,7 @@ class LivreurController extends AbstractController
             $user->setLivreur($livreur);
             $manager->persist($user);
             $manager->flush();
-            return $this->redirectToRoute('acceuil');
+            return $this->redirectToRoute('login');
         }
         return $this->render('livreur/index.html.twig', [
             'form' => $livreur_form->createView(),

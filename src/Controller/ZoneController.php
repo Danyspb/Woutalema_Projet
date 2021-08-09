@@ -55,7 +55,7 @@ class ZoneController extends AbstractController
     }
 
     /**
-     * @Route("info_zones/{id}", name="single_zone")
+     * @Route("/info_zones/{id}", name="single_zone")
      * @param ZoneRepository $reposi
      * @param $id
      * @return Response
@@ -88,7 +88,7 @@ class ZoneController extends AbstractController
     }
 
     /**
-     * @Route("modify_zone/{id}", name="modify_zone")
+     * @Route("/modify_zone/{id}", name="modify_zone")
      * @param Zone $mzone
      * @param EntityManagerInterface $manager
      * @param Request $reque

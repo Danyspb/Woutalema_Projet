@@ -59,13 +59,10 @@
                             <a class="nav-link" href="{{ path('produit') }}">Produit</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('service') }}">Service</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="{{ path('all_prod') }}">Mes produits</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('produit') }}">Mes Services</a>
+                            <a class="nav-link" href="{{ path('all_service') }}">Mes Services</a>
                         </li>
                         {% if not app.user %}
                             <li class="nav-item">
@@ -112,6 +109,7 @@
                         {{ form_row(form.prix,{'attr':{'placeholder': 'Saisissez le montant du produit'}}) }}
                         {{ form_row(form.imageFile,{'attr':{'placeholder': 'Mettez l\'image du produit' }}) }}
                         {{ form_row(form.lieu,{'attr':{'placeholder': 'Lieu de la disponibilite du produit' }}) }}
+                        {{ form_row(form.contact,{'attr':{'placeholder': 'Entrez le numero de joignabilite' }}) }}
                         <button type="submit" class="btn btn-success" style="margin-top: 4%; margin-bottom: 2%;">Modifier</button>
                         {{ form_end(form) }}
                     </div>

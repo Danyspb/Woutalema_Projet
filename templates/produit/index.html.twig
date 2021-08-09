@@ -59,13 +59,7 @@
                     <a class="nav-link" href="{{ path('produit') }}">Produit</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('service') }}">Service</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ path('all_prod') }}">Mes produits</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('produit') }}">Mes Services</a>
                 </li>
                 {% if not app.user %}
                     <li class="nav-item">
@@ -107,7 +101,7 @@
             <div class="col-md-4 offset-2">
                 {{ form_start(form) }}
                 {{ form_row(form.nom,{'attr':{'placeholder': 'Saisissez le libelle du produit'}}) }}
-                {{ form_row(form.type,{'label': 'Choisissez votre type de Compte'}) }}
+                {{ form_row(form.type,{'label': 'Choisissez votre type de Produit'}) }}
                 {{ form_row(form.description,{'attr':{'placeholder': 'Faite la description du produit'}}) }}
                 {{ form_row(form.prix,{'attr':{'placeholder': 'Saisissez le montant du produit'}}) }}
                 {{ form_row(form.imageFile,{'attr':{'placeholder': 'Mettez l\'image du produit' }}) }}

@@ -84,27 +84,42 @@
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('produit') }}">Produit</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('service') }}">Service</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('all_prod') }}">Mes produits</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('all_service') }}">Mes Services</a>
-                        </li>
-                        {% if not app.user %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('login') }}">Connexion</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('logout') }}">Deconnexion</a>
-                            </li>
-                        {% endif %}
+
+            {% if app.user %}
+                {% if is_granted('ROLE_CLIENT') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('produit') }}">Produit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('all_prod') }}">Mes Produits</a>
+                    </li>
+                    {% else %}
+                {% endif %}
+                {% if is_granted('ROLE_PRESTATAIRE') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('service') }}">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('all_service') }}">Mes Services</a>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_LIVREUR') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('zone') }}">Zone</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('all_zones') }}">Mes Zones</a>
+                    </li>
+                {% endif %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('logout') }}">Deconnexion</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('login') }}">Connexion</a>
+                </li>
+            {% endif %}
                     </ul>
                 </div>
             </div>
@@ -117,6 +132,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="caption">
+                            {% if app.user %}
+                            <marquee>
+                                <h4>Bienvenue : {{ app.user.prenom }} {{ app.user.nom }}</h4>
+                            </marquee>
+                            {% endif %}
                             <h2>Woutalema</h2>
                             <div class="line-dec"></div>
                             <p>Votre Site de recherche de vente produits et d'offre de prestation 100% Senegalaise disponible 24h/24.<br><strong>Connectez-vous et commencez votre shopping</strong>

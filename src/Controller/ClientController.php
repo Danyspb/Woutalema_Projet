@@ -33,7 +33,7 @@ class ClientController extends AbstractController
             $user->setClient($client);
             $man->persist($user);
             $man->flush();
-            return $this->redirectToRoute('acceuil');
+            return $this->redirectToRoute('login');
         }
         return $this->render('client/index.html.twig', [
             'form' => $client_form->createView(),

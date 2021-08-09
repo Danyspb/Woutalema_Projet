@@ -36,5 +36,30 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-    # - { path: ^/admin, roles: ROLE_ADMIN }
-    # - { path: ^/profile, roles: ROLE_USER }
+     - { path: ^/admin, roles: ROLE_ADMIN }
+     - { path: ^/profile, roles: ROLE_USER }
+     # pour le client ou l'acheteur
+     - { path: ^/produit, roles: ROLE_CLIENT }
+     - { path: ^/all_products, roles: ROLE_CLIENT }
+     - { path: ^/info_produit/?, roles: ROLE_CLIENT }
+     - { path: ^/produit_modify/?, roles: ROLE_CLIENT }
+     - { path: ^/produit_supprimer/?, roles: ROLE_CLIENT }
+    # pour les prestataires
+     - { path: ^/service, roles: ROLE_PRESTATAIRE }
+     - { path: ^/all_service, roles: ROLE_PRESTATAIRE }
+     - { path: ^/single_service/?, roles: ROLE_PRESTATAIRE }
+     - { path: ^/modify_service/?, roles: ROLE_PRESTATAIRE }
+     - { path: ^/supprime_service/?, roles: ROLE_PRESTATAIRE }
+    # pour le livreur
+     - { path: ^/zone, roles: ROLE_LIVREUR }
+     - { path: ^/all_zones, roles: ROLE_LIVREUR }
+     - { path: ^/info_zones/?, roles: ROLE_LIVREUR }
+     - { path: ^/modify_zone/?, roles: ROLE_LIVREUR }
+     - { path: ^/supp_zone/?, roles: ROLE_LIVREUR }
+
+    role_hierarchy:
+        ROLE_CLIENT: ROLE_CLIENT
+        ROLE_PRESTATAIRE: ROLE_PRESTATAIRE
+        ROLE_LIVREUR: ROLE_LIVREUR
+        ROLE_ADMIN : [ROLE_LIVREUR, ROLE_PRESTATAIRE, ROLE_CLIENT, ROLE_ADMIN]
+

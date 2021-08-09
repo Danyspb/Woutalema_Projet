@@ -31,7 +31,7 @@ class PrestataireController extends AbstractController
             $user->setPrestataire($prestataire);
             $manager->persist($user);
             $manager->flush();
-            return $this->redirectToRoute('acceuil');
+            return $this->redirectToRoute('login');
         }
         return $this->render('prestataire/index.html.twig', [
             'form' => $form_prestataire->createView(),

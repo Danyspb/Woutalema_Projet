@@ -44,7 +44,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="#"><img src="{{ asset('acceuil/assets/images/Woutalema.png') }}"  style="margin-top: -1%;" alt=""></a>
+        <a class="navbar-brand" href="{{ path('acceuil') }}"><img src="{{ asset('acceuil/assets/images/Woutalema.png') }}" style="margin-top: -1%;" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -56,16 +56,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('produit') }}">Produit</a>
+                    <a class="nav-link" href="{{ path('zone') }}">Zone</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('service') }}">Service</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('all_prod') }}">Mes produits</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('produit') }}">Mes Services</a>
+                    <a class="nav-link" href="{{ path('all_zones') }}">Mes Zones</a>
                 </li>
                 {% if not app.user %}
                     <li class="nav-item">

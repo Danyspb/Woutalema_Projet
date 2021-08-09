@@ -56,7 +56,7 @@ class ProduitController extends AbstractController
     }
 
     /**
-     * @Route("info_produit/{id}", name="single_prod")
+     * @Route("/info_produit/{id}", name="single_prod")
      * @param ProduitRepository $reposi
      * @return Response
      */
@@ -74,7 +74,7 @@ class ProduitController extends AbstractController
 
 
     /**
-     * @Route("/produit_supprimer{id}", name="produit_supp")
+     * @Route("/produit_supprimer/{id}", name="produit_supp")
      * @param $id
      * @param EntityManagerInterface $manager
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
