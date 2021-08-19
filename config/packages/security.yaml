@@ -65,10 +65,14 @@ security:
      - { path: ^/info_zones/?, roles: ROLE_LIVREUR }
      - { path: ^/modify_zone/?, roles: ROLE_LIVREUR }
      - { path: ^/supp_zone/?, roles: ROLE_LIVREUR }
-
-    role_hierarchy:
-        ROLE_CLIENT: ROLE_CLIENT
-        ROLE_PRESTATAIRE: ROLE_PRESTATAIRE
-        ROLE_LIVREUR: ROLE_LIVREUR
-        ROLE_ADMIN : [ROLE_LIVREUR, ROLE_PRESTATAIRE, ROLE_CLIENT, ROLE_ADMIN]
+    # pour l'administrateur
+     - { path: ^/types, roles: ROLE_ADMIN }
+     - { path: ^/type_modify/?, roles: ROLE_ADMIN }
+     - { path: ^/types_supprimer/?, roles: ROLE_ADMIN }
+     - { path: ^/domaine, roles: ROLE_ADMIN }
+     - { path: ^/domaine_modify/?, roles: ROLE_ADMIN }
+     - { path: ^/domaine_supprimer/?, roles: ROLE_ADMIN }
+     - { path: ^/domaine_supprimer/?, roles: ROLE_ADMIN }
+     - { path: ^/allaCcount, roles: ROLE_ADMIN }
+     - { path: ^/user_supprimer/?, roles: ROLE_ADMIN }
 

@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Domaine;
 use App\Entity\Types;
+use App\Entity\User;
 use App\Form\DomaineType;
 use App\Form\TypeProduitType;
 use App\Repository\DomaineRepository;
 use App\Repository\TypesRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -152,5 +154,35 @@ class AdminController extends AbstractController
             $manager->flush();
         }
         return $this->redirectToRoute('domaine');
+    }
+
+    /**
+     * @Route("/allaCcount", name="all_account")
+     * @param UserRepository $repository
+     * @return Response
+     */
+    public function AllAcount(UserRepository $repository):Response
+    {
+        $alluser = $repository->findAll();
+        return $this->render('admin/allCoun_admin.html.twig',[
+            'repo' => $alluser,
+        ]);
+    }
+
+    /**
+     * @Route("/user_supprimer/{id}", name="user_supp")
+     * @param $id
+     * @param EntityManagerInterface $manager
+     * @return RedirectResponse
+     */
+    public function deleteCount($id,EntityManagerInterface $manager)
+    {
+
+        $user = $manager->getRepository(User::class)->find($id);
+        if ($user != null ){
+            $manager->remove($user);
+            $manager->flush();
+        }
+        return $this->redirectToRoute('all_account');
     }
 }

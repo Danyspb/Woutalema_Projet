@@ -56,10 +56,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('produit') }}">Produit</a>
+                    <a class="nav-link" href="{{ path('types') }}">Types</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('all_prod') }}">Mes produits</a>
+                    <a class="nav-link" href="{{ path('domaine') }}">Domaines</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('all_account') }}">Les Comptes</a>
                 </li>
                 {% if not app.user %}
                     <li class="nav-item">
@@ -115,7 +118,7 @@
             <th>Action</th>
             </thead>
             {% for domaine in repo %}
-                <tbody>
+                <tbody style="text-align: center">
 
                 <td>{{ domaine.id }}</td>
                 <td>{{ domaine.libelle }}</td>
