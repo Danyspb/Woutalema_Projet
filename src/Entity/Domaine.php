@@ -6,9 +6,14 @@ use App\Repository\DomaineRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=DomaineRepository::class)
+ * @UniqueEntity(
+ *     fields={"libelle"},
+ *     message="le libelle existe deja"
+ * )
  */
 class Domaine
 {
