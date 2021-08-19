@@ -18,7 +18,6 @@ class MotoController extends AbstractController
      * @Route("/moto", name="moto")
      * @param Request $request
      * @param EntityManagerInterface $manager
-     * @param SessionInterface $session
      * @return Response
      */
     public function index(Request $request, EntityManagerInterface $manager): Response

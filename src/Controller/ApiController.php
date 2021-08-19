@@ -86,4 +86,20 @@ class ApiController extends AbstractController
 
 
     }
+
+    /**
+     * @Route("/api/login", name="api_login", methods={"POST"})
+     * @return JsonResponse
+     *
+     */
+    public function login(){
+        $user = $this->getUser();
+        return $this->json([
+           'username' => $user->getUsername(),
+           'prenom' => $user->getPrenom(),
+           'nom' => $user->getNom(),
+           'roles' => $user->getRoles()
+
+        ]);
+    }
 }

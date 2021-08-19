@@ -11,6 +11,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  *
@@ -31,6 +32,16 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     fields={"numero_cni"},
  *     message="Le numero de CNI existe deja"
  * )
+ * @ApiResource(
+ *
+ *     collectionOperations={"get"},
+ *     itemOperations={"get"},
+ *     normalizationContext={"groups"={"info:user"}},
+ *     paginationItemsPerPage= 1,
+ *     paginationClientItemsPerPage= true,
+ *     security="is_granted('ROLE_USER')"
+ *
+ * )
  *
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -41,7 +52,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("info:user")
      */
     private $id;
 
