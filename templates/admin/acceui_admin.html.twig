@@ -110,56 +110,7 @@
 
 
 {% block body %}
-    <h2 style="margin-top: 3%; margin-left: 38%; margin-bottom: 7%">La liste des Comptes Utilisateurs</h2>
-
-    <div class="contain container-fluid">
-        <table class="table table-hover offset-2" style="margin-bottom: 9%; margin-top: -4%; width: auto;">
-            <thead style="background-color: rgba(153, 101, 231, 0.5); text-align: center;">
-            <th>ID</th>
-            <th>Prenom</th>
-            <th>Nom</th>
-            <th>Adresse</th>
-            <th>Telephone</th>
-            <th>Numero CNI</th>
-            <th>Email</th>
-            <th>Login</th>
-            <th>Type de Compte</th>
-            <th>Action</th>
-            </thead>
-            {% for user in repo %}
-                <tbody style="text-align: center; height: 50px; overflow-y: auto; overflow-x: hidden;">
-                <td>{{ user.id }}</td>
-                <td>{{ user.prenom }}</td>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.adresse }}</td>
-                <td>{{ user.telephone }}</td>
-                <td>{{ user.numeroCni }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.username }}</td>
-                {% for role in user.roles %}
-                    {% if role == 'ROLE_LIVREUR'%}
-                        <td>Livreur</td>
-                    {% endif %}
-                    {% if role == 'ROLE_CLIENT'%}
-                        <td>Client</td>
-                    {% endif %}
-                    {% if role == 'ROLE_PRESTATAIRE'%}
-                        <td>Prestataire</td>
-                    {% endif %}
-                    {% if role == 'ROLE_ADMIN'%}
-                        <td>ADMIN</td>
-                    {% endif %}
-                {% endfor %}
-
-                <td>
-                    <a href="#" class="btn btn-outline-info">Bloquer</a>
-                    <a href="{{ path('user_supp',{'id': user.id}) }}" class="btn btn-outline-warning">Supprimer</a>
-                </td>
-                </tbody>
-            {% endfor %}
-        </table>
-    </div>
-
+    <h2>Bienvenue a la gestion des comptes</h2>
 {% endblock %}
 </body>
 

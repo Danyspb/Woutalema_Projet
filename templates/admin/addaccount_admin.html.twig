@@ -2,13 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Liste des Comptes{% endblock %}</title>
+    <title>{% block title %}Creer un Compte{% endblock %}</title>
     {# Run `composer require symfony/webpack-encore-bundle`
-       and uncomment the following Encore helpers to start using Symfony UX #}
+           and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
         {#{{ encore_entry_link_tags('app') }}#}
     {% endblock %}
-
 
 
     <meta charset="utf-8">
@@ -45,36 +44,25 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="{{ path('acceuil') }}"><img src="{{ asset('acceuil/assets/images/Woutalema.png') }}"  style="margin-top: -1%;" alt=""></a>
+        <a class="navbar-brand" href="{{ path('acceuil') }}"><img src="{{ asset('acceuil/assets/images/Woutalema.png') }}" style="margin-top: -1%;" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('user_add') }}">ADD ADMIN</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Types de Comptes
+                    <a class="nav-link" href="{{ path('acceuil') }}">Acceuil
+                        <span class="sr-only">(current)</span>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ path('all_Prestataires') }}">Prestataire</a>
-                        <a class="dropdown-item" href="{{ path('all_client') }}">Clients</a>
-                        <a class="dropdown-item" href="{{ path('all_livreur') }}">Livreur</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ path('admin_account_all') }}">Administrateur</a>
-                    </div>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Types de Publications
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Services</a>
-                        <a class="dropdown-item" href="#">Produits</a>
-                        <a class="dropdown-item" href="#">Course</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('user_add') }}">Add Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_account_all') }}">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('all_account') }}">User</a>
                 </li>
                 {% if not app.user %}
                     <li class="nav-item">
@@ -100,67 +88,52 @@
                     <h2>Woutalema</h2>
                     <div class="line-dec"></div>
                     <p>Votre Site de recherche de vente produits et d'offre de prestation 100% Senegalaise disponible 24h/24.<br><strong>Connectez-vous et commencez votre shopping</strong>
-                        <br><br>
+                        <br><br> <a rel="nofollow" href="https://www.facebook.com/tooplate/"></a> <a rel="nofollow" href="https://www.pexels.com"></a>.</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Banner Ends Here -->
-
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-    <h2 style="margin-top: 3%; margin-left: 38%; margin-bottom: 7%">La liste des Comptes Utilisateurs</h2>
+<h2 style="margin-top: 2%; margin-left: 35%; margin-bottom: 3%">Creation des Comptes Administrateurs </h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 offset-2">
+            {{ form_start(form) }}
+            <div class="form-group" style="padding: 40px 65px 60px 60px; background: rgba(111, 204, 251, 0.58); border-radius: 7px;">
+                <div class="row">
+                    <div class="col-md-6">{{ form_row(form.nom,{'attr':{'placeholder': 'Saisissez votre nom'}}) }}</div>
+                    <div class="col-md-6">{{ form_row(form.prenom,{'attr':{'placeholder': 'Saisissez votre prenom'}}) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form_row(form.date_naissance,{'attr':{'placeholder': 'Saisissez la marque'}}) }}</div>
+                    <div class="col-md-6">{{ form_row(form.adresse,{'attr':{'placeholder': 'Saisissez votre adresse'}}) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form_row(form.telephone,{'attr':{'placeholder': 'Numero de telephone'}}) }}</div>
+                    <div class="col-md-6">{{ form_row(form.email,{'attr':{'placeholder': 'Saisissez votre email'}}) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="margin-top: 7px;">{{ form_row(form.numero_cni,{'attr':{'placeholder': 'Numero CNI'}}) }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form_row(form.username,{'attr':{'placeholder': 'Saisissez votre identifiant'}}) }}</div>
+                    <div class="col-md-6">{{ form_row(form.password,{'attr':{'placeholder': 'Saisissez votre mots de passe'}}) }}</div>
+                </div>
+                <button type="submit" class="btn btn-success" style="margin-top: 4%; margin-left: 42%; margin-bottom: 2%;">Enregistrer</button>
+            </div>
 
-    <div class="contain container-fluid">
-        <table class="table table-hover offset-2" style="margin-bottom: 9%; margin-top: -4%; width: auto;">
-            <thead style="background-color: rgba(153, 101, 231, 0.5); text-align: center;">
-            <th>ID</th>
-            <th>Prenom</th>
-            <th>Nom</th>
-            <th>Adresse</th>
-            <th>Telephone</th>
-            <th>Numero CNI</th>
-            <th>Email</th>
-            <th>Login</th>
-            <th>Type de Compte</th>
-            <th>Action</th>
-            </thead>
-            {% for user in repo %}
-                <tbody style="text-align: center; height: 50px; overflow-y: auto; overflow-x: hidden;">
-                <td>{{ user.id }}</td>
-                <td>{{ user.prenom }}</td>
-                <td>{{ user.nom }}</td>
-                <td>{{ user.adresse }}</td>
-                <td>{{ user.telephone }}</td>
-                <td>{{ user.numeroCni }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.username }}</td>
-                {% for role in user.roles %}
-                    {% if role == 'ROLE_LIVREUR'%}
-                        <td>Livreur</td>
-                    {% endif %}
-                    {% if role == 'ROLE_CLIENT'%}
-                        <td>Client</td>
-                    {% endif %}
-                    {% if role == 'ROLE_PRESTATAIRE'%}
-                        <td>Prestataire</td>
-                    {% endif %}
-                    {% if role == 'ROLE_ADMIN'%}
-                        <td>ADMIN</td>
-                    {% endif %}
-                {% endfor %}
+            {{ form_end(form) }}
 
-                <td>
-                    <a href="#" class="btn btn-outline-info">Bloquer</a>
-                    <a href="{{ path('user_supp',{'id': user.id}) }}" class="btn btn-outline-warning">Supprimer</a>
-                </td>
-                </tbody>
-            {% endfor %}
-        </table>
+        </div>
+
+        {% endblock %}
     </div>
+</div>
 
-{% endblock %}
 </body>
 
 <hr>
@@ -198,8 +171,6 @@
         </div>
     </div>
     <!-- Footer Ends Here -->
-
-
 
 
     <!-- Sub Footer Starts Here -->

@@ -52,6 +52,49 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
          return $query->execute();
 
     }
+
+    public function finAllAdmin(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.roles LIKE :roles')
+            ->setParameter('roles', '%"'.'ROLE_ADMIN'.'"%')
+            ->orderBy('u.roles', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function finAllPrestataire(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.roles like :role')
+            ->setParameter('role', '%"'.'ROLE_PRESTATAIRE'.'"%')
+            ->orderBy('u.roles', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function finAllLivreur(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.roles like :role')
+            ->setParameter('role', '%"'.'ROLE_LIVREUR'.'"%')
+            ->orderBy('u.roles', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function finAllClient(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->Where('u.roles like :role')
+            ->setParameter('role', '%"'.'ROLE_CLIENT'.'"%')
+            ->orderBy('u.roles', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

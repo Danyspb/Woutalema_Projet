@@ -7,6 +7,7 @@ use App\Entity\Types;
 use App\Entity\User;
 use App\Form\DomaineType;
 use App\Form\TypeProduitType;
+use App\Form\UserAdminType;
 use App\Repository\DomaineRepository;
 use App\Repository\TypesRepository;
 use App\Repository\UserRepository;
@@ -15,6 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminController extends AbstractController
@@ -112,7 +114,6 @@ class AdminController extends AbstractController
             'repo' => $alldomains,
         ]);
     }
-
     /**
      * @Route("/domaine_modify/{id}", name="domaine_modify")
      * @param Domaine $domaine
@@ -140,6 +141,17 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/allaCcount", name="all_account")
+     */
+    public function acceuiCompte(): Response
+    {
+        return $this->render('admin/acceui_admin.html.twig', [
+            'controller_name' => 'AcceuilController',
+        ]);
+    }
+
+
+    /**
      * @Route("/domaine_supprimer/{id}", name="domaine_supp")
      * @param $id
      * @param EntityManagerInterface $manager
@@ -157,13 +169,13 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/allaCcount", name="all_account")
+     * @Route("/allaCcountPres", name="all_Prestataires")
      * @param UserRepository $repository
      * @return Response
      */
-    public function AllAcount(UserRepository $repository):Response
+    public function AllPrestataire(UserRepository $repository):Response
     {
-        $alluser = $repository->findAll();
+        $alluser = $repository->finAllPrestataire();
         return $this->render('admin/allCoun_admin.html.twig',[
             'repo' => $alluser,
         ]);
@@ -184,5 +196,71 @@ class AdminController extends AbstractController
             $manager->flush();
         }
         return $this->redirectToRoute('all_account');
+    }
+
+
+    /**
+     * @Route("/user_ad", name="user_add")
+     * @param Request $req
+     * @param EntityManagerInterface $man
+     * @param UserPasswordHasherInterface $hasher
+     * @return Response
+     */
+    public function AdminAdd(Request $req ,EntityManagerInterface $man, UserPasswordHasherInterface $hasher): Response
+    {
+        $user = new User();
+        $user_form = $this->createForm(UserAdminType::class,$user);
+        $user_form->handleRequest($req);
+        if ($user_form->isSubmitted() && $user_form->isValid())
+        {
+            $user->setRoles((array)'ROLE_ADMIN');
+            $has = $hasher->hashPassword($user,$user->getPassword());
+            $user->setPassword($has);
+            $man->persist($user);
+            $man->flush();
+            return $this->redirectToRoute('admin_account_all');
+        }
+        return $this->render('admin/addaccount_admin.html.twig', [
+            'form' => $user_form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin_account_all", name="admin_account_all")
+     * @param UserRepository $repository
+     * @return Response
+     */
+    public function AllAdminUser(UserRepository $repository):Response
+    {
+        $adminuser = $repository->finAllAdmin();
+        return $this->render('admin/allCoun_admin.html.twig',[
+            'repo' => $adminuser,
+        ]);
+    }
+
+    /**
+     * @Route("/allaCcountLivre", name="all_livreur")
+     * @param UserRepository $repository
+     * @return Response
+     */
+    public function AllLivreur(UserRepository $repository):Response
+    {
+        $alluser = $repository->finAllLivreur();
+        return $this->render('admin/allCoun_admin.html.twig',[
+            'repo' => $alluser,
+        ]);
+    }
+
+    /**
+     * @Route("/allaCcountClie", name="all_client")
+     * @param UserRepository $repository
+     * @return Response
+     */
+    public function AllClient(UserRepository $repository):Response
+    {
+        $alluser = $repository->finAllClient();
+        return $this->render('admin/allCoun_admin.html.twig',[
+            'repo' => $alluser,
+        ]);
     }
 }
