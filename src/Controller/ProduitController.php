@@ -3,10 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
+use App\Entity\User;
 use App\Form\ProduitType;
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use http\Client\Curl\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,6 +33,7 @@ class ProduitController extends AbstractController
             $produit->setClient($usCon);
             $manager->persist($produit);
             $manager->flush();
+            $this->addFlash('success', 'Produit ajoute avec Succes');
             return $this->redirectToRoute('all_prod');
         }
         return $this->render('produit/index.html.twig', [
@@ -59,11 +60,13 @@ class ProduitController extends AbstractController
     /**
      * @Route("/info_produit/{id}", name="single_prod")
      * @param ProduitRepository $reposi
+     * @param $id
      * @return Response
      */
 
     public function singleProd(ProduitRepository $reposi, $id)
     {
+
         $info = $reposi->find($id);
         if ($info != null)
         {
@@ -87,6 +90,7 @@ class ProduitController extends AbstractController
         if ($prod != null ){
             $manager->remove($prod);
             $manager->flush();
+            $this->addFlash('warning', 'Produit supprime avec Succes');
         }
         return $this->redirectToRoute('all_prod');
     }
@@ -110,6 +114,7 @@ class ProduitController extends AbstractController
             $prod->setClient($usCon);
             $manager->persist($prod);
             $manager->flush();
+            $this->addFlash('notice','Produit modifie avec Succes');
             return $this->redirectToRoute('all_prod');
         }
         return $this->render('produit/modify_produit.html.twig', [

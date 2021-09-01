@@ -32,6 +32,7 @@ class LivreurController extends AbstractController
             $user->setLivreur($livreur);
             $man->persist($user);
             $man->flush();
+            $this->addFlash('success','Compte cree avec Succes. Veillez vous connecter maintenant');
             return $this->redirectToRoute('login');
         }
 

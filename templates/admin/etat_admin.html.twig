@@ -101,7 +101,7 @@
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-    <h2 style="margin-top: 3%; margin-left: 42%; margin-bottom: 7%">Definir les Types de Domaines</h2>
+    <h2 style="margin-top: 3%; margin-left: 42%; margin-bottom: 7%">Definir les Etats des Publications</h2>
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-1">
@@ -113,22 +113,21 @@
         </div>
     </div>
     <div class="contain container-fluid">
-        <h5 style="margin-top: -11%; margin-bottom: 5%; margin-left: 60%;">La liste des Domaines</h5>
+        <h5 style="margin-top: -11%; margin-bottom: 5%; margin-left: 60%;">La liste des Etats des Publications</h5>
         <table class="table table-hover offset-md-7" style="margin-bottom: 9%; margin-top: -4%; width: auto">
             <thead style="background-color: rgba(153, 101, 231, 0.5); text-align: center;">
             <th>ID</th>
-            <th>Types de Domaines</th>
+            <th>Etat des Publications</th>
             <th>Action</th>
             </thead>
-            {% for domaine in repo %}
+            {% for etat in repo %}
                 <tbody style="text-align: center">
 
-                <td>{{ domaine.id }}</td>
-                <td>{{ domaine.libelle }}</td>
+                <td>{{ etat.id }}</td>
+                <td>{{ etat.libelle }}</td>
 
                 <td>
-                    <a href="{{ path('domaine_modify',{'id': domaine.id}) }}" class="btn btn-outline-info">Modifier</a>
-                    <a href="{{ path('domaine_supp',{'id': domaine.id}) }}" class="btn btn-outline-warning">Supprimer</a>
+                    <a href="{{ path('etat_supp',{'id': etat.id}) }}" class="btn btn-outline-warning">Supprimer</a>
                 </td>
                 </tbody>
             {% endfor %}

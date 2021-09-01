@@ -42,7 +42,7 @@ class UserType extends AbstractType
             ])
             ->add('telephone')
             ->add('email', EmailType::class)
-            ->add('numero_cni')
+            ->add('numeroCni')
             ->add('adresse')
         ;
     }

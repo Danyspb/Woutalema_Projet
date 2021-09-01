@@ -30,6 +30,7 @@ class ServiceController extends AbstractController
             $servi->setPrestataire($presCon);
             $manager->persist($servi);
             $manager->flush();
+            $this->addFlash('success', 'Service ajoute avec Succes');
             return  $this->redirectToRoute('all_service');
         }
         return $this->render('service/index.html.twig', [
@@ -89,6 +90,7 @@ class ServiceController extends AbstractController
             $service->setPrestataire($presCon);
             $manager->persist($service);
             $manager->flush();
+            $this->addFlash('notice', 'Service modifie avec Succes');
             return $this->redirectToRoute('all_service');
         }
         return $this->render('service/modify_service.html.twig', [
@@ -110,6 +112,7 @@ class ServiceController extends AbstractController
         if ($service != null ){
             $manager->remove($service);
             $manager->flush();
+            $this->addFlash('warning', 'Service supprime avec Succes');
         }
         return $this->redirectToRoute('all_service');
     }

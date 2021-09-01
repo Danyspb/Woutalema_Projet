@@ -90,6 +90,18 @@
             </div>
         </div>
 
+        <div class="info" style="margin-left: 20%; margin-bottom: 3%;">
+            <strong style="color: #0000cc">
+                {% for label, messages in app.flashes(['success', 'warning','notice']) %}
+                    {% for message in messages %}
+                        <div class="flash-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </strong>
+        </div>
+
         <div class="featured container no-gutter">
 
             <div class="row posts">

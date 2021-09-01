@@ -31,6 +31,7 @@ class PrestataireController extends AbstractController
             $user->setPrestataire($prestataire);
             $manager->persist($user);
             $manager->flush();
+            $this->addFlash('success','Compte cree avec Succes. Veillez vous connecter maintenant');
             return $this->redirectToRoute('login');
         }
         return $this->render('prestataire/index.html.twig', [

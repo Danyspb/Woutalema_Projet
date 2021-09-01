@@ -33,7 +33,9 @@ class ClientController extends AbstractController
             $user->setClient($client);
             $man->persist($user);
             $man->flush();
+            $this->addFlash('success','Compte cree avec Succes. Veillez vous connecter maintenant');
             return $this->redirectToRoute('login');
+
         }
         return $this->render('client/index.html.twig', [
             'form' => $client_form->createView(),

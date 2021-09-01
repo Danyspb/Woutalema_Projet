@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Authentification{% endblock %}</title>
-    {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
     {% block stylesheets %}
-        {#{{ encore_entry_link_tags('app') }}#}
     {% endblock %}
 
 
@@ -45,6 +42,13 @@
     <body>
     <div class="limiter">
         <div class="container-login100" style="background-image: url('{{ asset('login/images/bg-01.jpg') }}')">
+            <marquee> {% for message in app.flashes('success') %}
+                    <div class="flash-notice">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </marquee>
+
             <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="margin-top: 05%;">
                 <form class="login100-form validate-form" method="post" action="{{ path('login') }}">
 					<span class="login100-form-title p-b-49">

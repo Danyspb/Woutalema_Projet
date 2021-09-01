@@ -3,12 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Domaine;
+use App\Entity\Etat;
 use App\Entity\Types;
 use App\Entity\User;
 use App\Form\DomaineType;
+use App\Form\EtatType;
 use App\Form\TypeProduitType;
 use App\Form\UserAdminType;
 use App\Repository\DomaineRepository;
+use App\Repository\EtatRepository;
 use App\Repository\TypesRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -263,4 +266,49 @@ class AdminController extends AbstractController
             'repo' => $alluser,
         ]);
     }
+
+
+    /**
+     * @Route("/etats", name="etats")
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param EtatRepository $repos
+     * @return Response
+     */
+    public function Etat(Request $request, EntityManagerInterface $manager, EtatRepository $repos): Response
+    {
+        $Alletat = $repos->findAll();
+        $situation = new Etat();
+        $etat_form = $this->createForm(EtatType::class,$situation );
+        $etat_form->handleRequest($request);
+        if ($etat_form->isSubmitted() && $etat_form->isValid())
+        {
+            $manager->persist($situation);
+            $manager->flush();
+            return $this->redirectToRoute('etats');
+        }
+        return $this->render('admin/etat_admin.html.twig', [
+            'form'=> $etat_form->createView(),
+            'repo' => $Alletat,
+        ]);
+    }
+
+    /**
+     * @Route("/etat_supprimer/{id}", name="etat_supp")
+     * @param $id
+     * @param EntityManagerInterface $manager
+     * @return RedirectResponse
+     */
+    public function deleteEtat($id,EntityManagerInterface $manager)
+    {
+
+        $etat = $manager->getRepository(Etat::class)->find($id);
+        if ($etat != null ){
+            $manager->remove($etat);
+            $manager->flush();
+        }
+        return $this->redirectToRoute('etats');
+    }
+
+
 }

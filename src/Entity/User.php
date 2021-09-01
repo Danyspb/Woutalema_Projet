@@ -98,9 +98,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="integer")
      * @Assert\Length(
-     *     max= "9",
+     *     max= 9,
      *     maxMessage="erreur chiffre depasse",
-     *     min= "9",
+     *     min= 9,
      *     minMessage="erreur chiffre manquant"
      * )
      * @Groups("info:user")
@@ -113,16 +113,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $email;
 
-    /**
-     * @ORM\Column(type="integer")
-     * @Assert\Length(
-     *
-     *     min="17",
-     *     max="17"
-     * )
-     * @Groups("info:user")
-     */
-    private $numero_cni;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -145,6 +135,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToOne(targetEntity=Livreur::class, cascade={"persist", "remove"})
      */
     private $livreur;
+
+    /**
+     * @ORM\Column(type="bigint")
+     * @Assert\Length(
+     *     min=17,
+     *     max=17,
+     * )
+     * @Groups("info:user")
+     */
+    private $numero_cni;
+
 
     public function getId(): ?int
     {
@@ -290,17 +291,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getNumeroCni(): ?string
-    {
-        return $this->numero_cni;
-    }
-
-    public function setNumeroCni(string $numero_cni): self
-    {
-        $this->numero_cni = $numero_cni;
-
-        return $this;
-    }
 
     public function getAdresse(): ?string
     {
@@ -349,5 +339,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getNumeroCni(): ?string
+    {
+        return $this->numero_cni;
+    }
+
+    public function setNumeroCni(string $numero_cni): self
+    {
+        $this->numero_cni = $numero_cni;
+
+        return $this;
+    }
+
 
 }

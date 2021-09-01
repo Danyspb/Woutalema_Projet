@@ -31,6 +31,7 @@ class ZoneController extends AbstractController
             $zone->setLivreur($livCon);
             $manager->persist($zone);
             $manager->flush();
+            $this->addFlash('success', 'Zone ajoute avec Succes');
 
             return $this->redirectToRoute('all_zones');
         }
@@ -83,6 +84,7 @@ class ZoneController extends AbstractController
         if ($zon != null ){
             $manager->remove($zon);
             $manager->flush();
+            $this->addFlash('warning', 'Zone supprime avec Succes');
         }
         return $this->redirectToRoute('all_zones');
     }
@@ -104,6 +106,7 @@ class ZoneController extends AbstractController
             $mzone->setLivreur($livCon);
             $manager->persist($mzone);
             $manager->flush();
+            $this->addFlash('notice', 'Zone modifie avec Succes');
             return  $this->redirectToRoute('all_zones');
 
         }
