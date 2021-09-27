@@ -1,0 +1,32 @@
+.MyProd{
+    margin-top: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 150px 0px;
+    background-position: center center;
+}
+.MyProd .caption {
+    background-color: rgba(250,250,250,0.9);
+    padding: 30px;
+    max-width: 450px;
+}
+.MyProd .caption h2 {
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e1e1e;
+}
+.MyProd .caption .line-dec {
+    width: 30px;
+    height: 5px;
+    background-color: #3a8bcd;
+}
+.MyProd .caption p {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+.MyProd{
+    border-top: none;
+    margin-top: 0px;
+}

@@ -12,7 +12,7 @@ class LivreurType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('numero_permis')
+            ->add('numeroPermis')
         ;
     }
 

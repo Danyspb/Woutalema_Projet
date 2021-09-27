@@ -39,7 +39,7 @@ class Publication
     private $service;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="publications")
+     * @ORM\ManyToOne(targetEntity=Produit::class, inversedBy="publications",cascade={"persist", "remove"})
      */
     private $produit;
 

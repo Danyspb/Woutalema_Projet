@@ -30,10 +30,9 @@ class Livreur
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(
-     *
-     *     min="15",
-     *     max="15"
+     *@Assert\Length(
+     *     min=12,
+     *     minMessage="Erreur !! Verifier la saisie "
      * )
      */
     private $numero_permis;

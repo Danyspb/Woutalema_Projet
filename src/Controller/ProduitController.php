@@ -51,7 +51,6 @@ class ProduitController extends AbstractController
     {
         $client = $this->getUser()->getclient();
         $produits = $repos->findAllProducId($client);
-
         return $this->render('produit/all_product.html.twig',[
             'produits'=>$produits,
         ]);
@@ -61,14 +60,16 @@ class ProduitController extends AbstractController
      * @Route("/info_produit/{id}", name="single_prod")
      * @param ProduitRepository $reposi
      * @param $id
+     * @param SessionInterface $session
      * @return Response
      */
 
-    public function singleProd(ProduitRepository $reposi, $id)
+    public function singleProd(ProduitRepository $reposi, $id, SessionInterface $session)
     {
 
         $info = $reposi->find($id);
         if ($info != null)
+        $session->set("test",$info);
         {
             return $this->render('produit/info_product.html.twig',[
                 'produit' => $info,

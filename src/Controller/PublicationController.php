@@ -21,26 +21,26 @@ class PublicationController extends AbstractController
      * @param EntityManagerInterface $manager
      * @param PublicationRepository $repos
      * @param ProduitRepository $pro
+     * @param SessionInterface $session
      * @return Response
      */
-    public function index(Request $req, EntityManagerInterface $manager,PublicationRepository $repos,ProduitRepository $pro): Response
+    public function index(Request $req, EntityManagerInterface $manager,PublicationRepository $repos,ProduitRepository $pro, SessionInterface $session): Response
     {
-
-        $pro->findAll();
-        $ALLpub = $repos->findAll();
+        $nice = $session->get('test');
         $publication = new Publication();
-        $publi_form = $this->createForm(PublicationType::class, $publication);
-        $publi_form->handleRequest($req);
-        if ($publi_form->isSubmitted() && $publi_form->isValid())
-
+        $form_pub = $this->createForm(PublicationType::class, $publication);
+        $form_pub->handleRequest($req);
+        if ($form_pub->isSubmitted() && $form_pub->isValid())
         {
+            $publication->setProduit($nice);
             $publication->setDatePublication(new \DateTime());
             $manager->persist($publication);
             $manager->flush();
-            dd($publication);
+            
         }
-        return $this->render('publication/index.html.twig', [
-            'form'=> $publi_form->createView(),
+        return $this->render('publication/index.html.twig',[
+            'form' => $form_pub->createView()
         ]);
+
     }
 }

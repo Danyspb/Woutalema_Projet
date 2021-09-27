@@ -61,7 +61,7 @@ class Produit
     private $client;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Types::class, inversedBy="produits")
+     * @ORM\ManyToOne(targetEntity=Types::class, inversedBy="produits",cascade={"persist", "remove"})
      */
     private $type;
 

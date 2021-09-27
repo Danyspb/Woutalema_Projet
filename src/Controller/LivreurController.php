@@ -25,7 +25,7 @@ class LivreurController extends AbstractController
         $livreur = new Livreur();
         $livreur_form = $this->createForm(LivreurType::class,$livreur);
         $livreur_form->handleRequest($request);
-        if ($livreur_form->isSubmitted() || $livreur_form->isValid())
+        if ($livreur_form->isSubmitted() && $livreur_form->isSubmitted())
         {
             $man->persist($livreur);
             $user = $session->get('user');
@@ -33,9 +33,8 @@ class LivreurController extends AbstractController
             $man->persist($user);
             $man->flush();
             $this->addFlash('success','Compte cree avec Succes. Veillez vous connecter maintenant');
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('acceuil');
         }
-
         return $this->render('livreur/index.html.twig', [
             'form' => $livreur_form->createView(),
         ]);

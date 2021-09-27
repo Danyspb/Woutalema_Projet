@@ -30,7 +30,7 @@ class Types
     private $libelle;
 
     /**
-     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="type")
+     * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="type",cascade={"persist", "remove"})
      */
     private $produits;
 

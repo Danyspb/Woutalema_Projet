@@ -135,6 +135,9 @@
             "./config/packages/lexik_jwt_authentication.yaml"
         ]
     },
+    "mercuryseries/flashy-bundle": {
+        "version": "v3.0.2"
+    },
     "monolog/monolog": {
         "version": "2.3.2"
     },

@@ -46,6 +46,7 @@
 
             <!-- Bootstrap core CSS -->
             <link href="{{ asset('acceuil/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+            <link href="{{ asset('fontawesome/css/all.css') }}">
 
 
             <!-- Additional CSS Files -->
@@ -78,10 +79,11 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
+
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('acceuil') }}">Acceuil
-                                <span class="sr-only">(current)</span>
+                            <a class="nav-link" href="{{ path('acceuil') }}">
+                                Acceuil
                             </a>
                         </li>
 
@@ -126,11 +128,16 @@
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('logout') }}">Deconnexion</a>
+                    <a class="nav-link" href="{{ path('logout') }}">
+                        Deconnexion
+                    </a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('login') }}">Connexion</a>
+
+                    <a class="nav-link" href="{{ path('login') }}">
+                        Connexion / S'inscrire
+                    </a>
                 </li>
             {% endif %}
                     </ul>
